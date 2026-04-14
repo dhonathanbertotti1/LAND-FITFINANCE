@@ -1,13 +1,669 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>List Finance - Sistema Financeiro Inteligente</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Alpine.js -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0066FF',
+                        secondary: '#6366f1',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        [x-cloak] { display: none !important; }
+        .glass {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-white text-slate-900 font-sans selection:bg-primary/20 selection:text-primary" x-data="{ isScrolled: false, mobileMenuOpen: false }" @scroll.window="isScrolled = window.pageYOffset > 20">
 
+    <!-- Navbar -->
+    <nav 
+        :class="isScrolled ? 'py-4 bg-white/80 backdrop-blur-xl border-b border-slate-100 shadow-sm' : 'py-8 bg-transparent'"
+        class="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+    >
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center group cursor-pointer">
+                    <span class="text-2xl font-black tracking-tighter text-slate-900">
+                        LIST<span class="text-primary">FINANCE</span>
+                    </span>
+                </div>
+
+                <!-- Desktop Nav -->
+                <div class="hidden md:flex items-center gap-10">
+                    <a href="#recursos" class="text-sm font-bold text-slate-500 hover:text-primary transition-colors tracking-tight">Recursos</a>
+                    <a href="#como-funciona" class="text-sm font-bold text-slate-500 hover:text-primary transition-colors tracking-tight">Como Funciona</a>
+                    <a href="#precos" class="text-sm font-bold text-slate-500 hover:text-primary transition-colors tracking-tight">Preços</a>
+                    <a href="#faq" class="text-sm font-bold text-slate-500 hover:text-primary transition-colors tracking-tight">FAQ</a>
+                </div>
+
+                <div class="hidden md:flex items-center gap-4">
+                    <button class="text-sm font-bold text-slate-900 px-6 py-2 hover:text-primary transition-colors">Entrar</button>
+                    <button class="bg-slate-900 text-white px-6 py-3 rounded-2xl text-sm font-bold hover:bg-slate-800 transition-all shadow-lg shadow-slate-200">Começar Agora</button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="p-2 text-slate-900">
+                        <i data-lucide="menu" x-show="!mobileMenuOpen"></i>
+                        <i data-lucide="x" x-show="mobileMenuOpen"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div x-show="mobileMenuOpen" x-cloak x-transition class="md:hidden bg-white border-b border-slate-100 p-6 space-y-4">
+            <a href="#recursos" @click="mobileMenuOpen = false" class="block text-lg font-bold text-slate-900">Recursos</a>
+            <a href="#como-funciona" @click="mobileMenuOpen = false" class="block text-lg font-bold text-slate-900">Como Funciona</a>
+            <a href="#precos" @click="mobileMenuOpen = false" class="block text-lg font-bold text-slate-900">Preços</a>
+            <a href="#faq" @click="mobileMenuOpen = false" class="block text-lg font-bold text-slate-900">FAQ</a>
+            <div class="pt-4 flex flex-col gap-4">
+                <button class="w-full py-4 rounded-2xl font-bold text-slate-900 bg-slate-50">Entrar</button>
+                <button class="w-full py-4 rounded-2xl font-bold text-white bg-primary">Começar Agora</button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero -->
+        <section class="relative pt-32 pb-20 overflow-hidden bg-white border-b border-slate-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <div class="inline-flex items-center gap-2 bg-slate-900 text-white px-4 py-1.5 rounded-full text-xs font-bold mb-8 tracking-wider uppercase">
+                            <span class="relative flex h-2 w-2">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                            </span>
+                            Novo: Inteligência Financeira 2.0
+                        </div>
+                        
+                        <h1 class="text-6xl sm:text-7xl lg:text-8xl font-bold leading-[0.9] mb-8 text-slate-900 tracking-tighter">
+                            Controle suas <span class="text-primary">finanças</span> pelo <span class="text-slate-400">WhatsApp.</span>
+                        </h1>
+                        
+                        <p class="text-xl text-slate-500 mb-12 leading-relaxed max-w-lg font-medium">
+                            Mande um áudio, texto ou foto do comprovante e deixe nossa IA organizar tudo. Ou se preferir, tenha o controle total com lançamentos manuais.
+                        </p>
+                        
+                        <div class="flex flex-col sm:flex-row gap-5 mb-16">
+                            <a href="#" class="bg-primary text-white px-10 py-5 rounded-2xl text-lg font-bold shadow-2xl shadow-primary/20 hover:bg-primary/90 transition-all flex items-center justify-center gap-3">
+                                <i data-lucide="layout-dashboard"></i>
+                                Começar Grátis
+                            </a>
+                            <a href="#como-funciona" class="bg-white text-slate-900 border border-slate-200 px-10 py-5 rounded-2xl text-lg font-bold hover:border-primary/30 transition-all flex items-center justify-center gap-2">
+                                Ver Demo
+                                <i data-lucide="arrow-right"></i>
+                            </a>
+                        </div>
+                        
+                        <div class="flex flex-wrap gap-x-8 gap-y-4">
+                            <div class="flex items-center gap-2 text-slate-400 text-sm font-bold uppercase tracking-widest">
+                                <i data-lucide="check-circle-2" class="text-primary w-4 h-4"></i>
+                                Controle de Gastos
+                            </div>
+                            <div class="flex items-center gap-2 text-slate-400 text-sm font-bold uppercase tracking-widest">
+                                <i data-lucide="check-circle-2" class="text-primary w-4 h-4"></i>
+                                Relatórios IA
+                            </div>
+                            <div class="flex items-center gap-2 text-slate-400 text-sm font-bold uppercase tracking-widest">
+                                <i data-lucide="check-circle-2" class="text-primary w-4 h-4"></i>
+                                Metas Inteligentes
+                            </div>
+                            <div class="flex items-center gap-2 text-slate-400 text-sm font-bold uppercase tracking-widest">
+                                <i data-lucide="check-circle-2" class="text-primary w-4 h-4"></i>
+                                Segurança Bancária
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="relative">
+                        <!-- Dashboard Preview -->
+                        <div class="relative z-10 bg-slate-900 p-1.5 rounded-[48px] shadow-2xl border border-slate-800">
+                            <div class="bg-slate-950 rounded-[42px] overflow-hidden border border-slate-800">
+                                <div class="bg-slate-900/50 backdrop-blur-md p-6 flex items-center justify-between border-b border-slate-800">
+                                    <div class="flex items-center gap-4">
+                                        <div class="w-10 h-10 bg-primary/20 rounded-xl flex items-center justify-center">
+                                            <i data-lucide="wallet" class="text-primary"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-white font-bold text-base">Meu Saldo</h4>
+                                            <p class="text-slate-500 text-[10px] font-bold uppercase tracking-widest">Atualizado agora</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex gap-2">
+                                        <div class="w-2 h-2 rounded-full bg-slate-700"></div>
+                                        <div class="w-2 h-2 rounded-full bg-slate-700"></div>
+                                        <div class="w-2 h-2 rounded-full bg-slate-700"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="p-8 space-y-8 h-[480px] overflow-y-auto custom-scrollbar">
+                                    <div class="grid grid-cols-2 gap-4">
+                                        <div class="bg-slate-900/50 p-4 rounded-3xl border border-slate-800">
+                                            <div class="flex justify-between items-start mb-2">
+                                                <i data-lucide="trending-up" class="text-green-400 w-4 h-4"></i>
+                                                <span class="text-[10px] font-bold text-green-400">+R$ 1.200</span>
+                                            </div>
+                                            <p class="text-2xl font-bold text-white tracking-tight">R$ 12.450</p>
+                                            <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Saldo Total</p>
+                                        </div>
+                                        <div class="bg-slate-900/50 p-4 rounded-3xl border border-slate-800">
+                                            <div class="flex justify-between items-start mb-2">
+                                                <i data-lucide="credit-card" class="text-red-400 w-4 h-4"></i>
+                                                <span class="text-[10px] font-bold text-red-400">-R$ 450</span>
+                                            </div>
+                                            <p class="text-2xl font-bold text-white tracking-tight">R$ 3.120</p>
+                                            <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Gastos Mês</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="space-y-4">
+                                        <div class="flex justify-between items-end">
+                                            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Meta: Reserva de Emergência</span>
+                                            <span class="text-[10px] font-bold text-primary uppercase tracking-widest">72% Concluído</span>
+                                        </div>
+                                        <div class="h-1.5 bg-slate-800 rounded-full overflow-hidden">
+                                            <div class="h-full bg-primary w-[72%] rounded-full shadow-[0_0_12px_rgba(0,102,255,0.5)]"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="space-y-4">
+                                        <div class="bg-slate-900/80 p-5 rounded-3xl border border-slate-800">
+                                            <div class="flex items-center justify-between mb-4">
+                                                <div class="flex items-center gap-4">
+                                                    <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center text-primary">
+                                                        <i data-lucide="pie-chart" class="w-5 h-5"></i>
+                                                    </div>
+                                                    <span class="font-bold text-white text-sm">Distribuição</span>
+                                                </div>
+                                                <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Abril 2024</span>
+                                            </div>
+                                            <div class="space-y-3">
+                                                <div class="flex items-center justify-between bg-slate-950 p-3 rounded-2xl border border-slate-800/50">
+                                                    <div class="flex items-center gap-3">
+                                                        <div class="w-2 h-2 rounded-full bg-primary"></div>
+                                                        <span class="text-xs font-bold text-slate-300">Alimentação</span>
+                                                    </div>
+                                                    <span class="text-xs font-bold text-white">R$ 850</span>
+                                                </div>
+                                                <div class="flex items-center justify-between bg-slate-950 p-3 rounded-2xl border border-slate-800/50">
+                                                    <div class="flex items-center gap-3">
+                                                        <div class="w-2 h-2 rounded-full bg-green-400"></div>
+                                                        <span class="text-xs font-bold text-slate-300">Lazer</span>
+                                                    </div>
+                                                    <span class="text-xs font-bold text-white">R$ 420</span>
+                                                </div>
+                                                <div class="flex items-center justify-between bg-slate-950 p-3 rounded-2xl border border-slate-800/50">
+                                                    <div class="flex items-center gap-3">
+                                                        <div class="w-2 h-2 rounded-full bg-orange-400"></div>
+                                                        <span class="text-xs font-bold text-slate-300">Contas</span>
+                                                    </div>
+                                                    <span class="text-xs font-bold text-white">R$ 1.850</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Floating Badge -->
+                        <div class="absolute -right-8 top-20 z-20 bg-white p-5 rounded-3xl shadow-2xl border border-slate-100 flex items-center gap-4 animate-bounce" style="animation-duration: 4s;">
+                            <div class="w-12 h-12 bg-green-500 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-green-500/20">
+                                <i data-lucide="trending-up"></i>
+                            </div>
+                            <div>
+                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Economia Total</p>
+                                <p class="text-xl font-bold text-slate-900">R$ 15.430</p>
+                            </div>
+                        </div>
+
+                        <!-- Decorative background -->
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-gradient-to-tr from-primary/10 to-secondary/10 rounded-full blur-3xl -z-10"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats -->
+        <section class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-12">
+                    <div class="text-center">
+                        <p class="text-4xl font-bold text-slate-900 mb-2 tracking-tighter">10k+</p>
+                        <p class="text-sm font-bold text-slate-400 uppercase tracking-widest">Usuários Ativos</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-4xl font-bold text-slate-900 mb-2 tracking-tighter">R$ 50M+</p>
+                        <p class="text-sm font-bold text-slate-400 uppercase tracking-widest">Transacionados</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-4xl font-bold text-slate-900 mb-2 tracking-tighter">4.9/5</p>
+                        <p class="text-sm font-bold text-slate-400 uppercase tracking-widest">Avaliação Média</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-4xl font-bold text-slate-900 mb-2 tracking-tighter">24/7</p>
+                        <p class="text-sm font-bold text-slate-400 uppercase tracking-widest">Suporte Especializado</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works -->
+        <section id="como-funciona" class="py-24 bg-slate-900 text-white overflow-hidden relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center max-w-3xl mx-auto mb-20">
+                    <h2 class="text-4xl sm:text-5xl font-bold mb-6 tracking-tight">
+                        Como começar no <span class="text-primary">List Finance?</span>
+                    </h2>
+                    <p class="text-lg text-slate-400">
+                        Simplicidade é a nossa prioridade. Em 3 passos você assume o controle total da sua vida financeira.
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-12 relative">
+                    <div class="relative z-10 flex flex-col items-center text-center">
+                        <div class="w-20 h-20 bg-primary rounded-3xl flex items-center justify-center text-white mb-8 shadow-2xl shadow-primary/40 relative border border-white/10">
+                            <i data-lucide="user-plus" class="w-9 h-9"></i>
+                            <div class="absolute -top-3 -right-3 w-8 h-8 bg-white text-primary rounded-full flex items-center justify-center font-bold text-sm shadow-lg">1</div>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Crie sua Conta</h3>
+                        <p class="text-slate-400 leading-relaxed">Cadastre-se em segundos e escolha o plano que melhor se adapta ao seu momento financeiro.</p>
+                    </div>
+                    <div class="relative z-10 flex flex-col items-center text-center">
+                        <div class="w-20 h-20 bg-primary rounded-3xl flex items-center justify-center text-white mb-8 shadow-2xl shadow-primary/40 relative border border-white/10">
+                            <i data-lucide="message-circle" class="w-9 h-9"></i>
+                            <div class="absolute -top-3 -right-3 w-8 h-8 bg-white text-primary rounded-full flex items-center justify-center font-bold text-sm shadow-lg">2</div>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Mande um WhatsApp</h3>
+                        <p class="text-slate-400 leading-relaxed">Envie um áudio, texto ou foto do seu gasto para o nosso número. Nossa IA cuida do resto.</p>
+                    </div>
+                    <div class="relative z-10 flex flex-col items-center text-center">
+                        <div class="w-20 h-20 bg-primary rounded-3xl flex items-center justify-center text-white mb-8 shadow-2xl shadow-primary/40 relative border border-white/10">
+                            <i data-lucide="trending-up" class="w-9 h-9"></i>
+                            <div class="absolute -top-3 -right-3 w-8 h-8 bg-white text-primary rounded-full flex items-center justify-center font-bold text-sm shadow-lg">3</div>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Acompanhe no App</h3>
+                        <p class="text-slate-400 leading-relaxed">Visualize seus relatórios detalhados, metas e saúde financeira em um dashboard intuitivo.</p>
+                    </div>
+                </div>
+                
+                <div class="mt-20 text-center">
+                    <a href="#" class="inline-flex items-center gap-3 bg-white text-slate-900 px-10 py-5 rounded-2xl text-xl font-bold shadow-2xl hover:bg-slate-100 transition-all">
+                        Começar Agora
+                        <i data-lucide="arrow-right" class="text-primary"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(0,102,255,0.1),transparent_70%)]"></div>
+        </section>
+
+        <!-- Features -->
+        <section id="recursos" class="py-32 bg-slate-50 relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-8">
+                    <div class="max-w-2xl">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest mb-6">Recursos do Sistema</div>
+                        <h2 class="text-5xl sm:text-6xl font-bold text-slate-900 tracking-tighter leading-[0.9]">
+                            Gestão financeira <span class="text-primary">sem esforço.</span>
+                        </h2>
+                    </div>
+                    <p class="text-xl text-slate-500 max-w-sm font-medium leading-relaxed">
+                        Do manual ao automático via WhatsApp, o List Finance se adapta ao seu estilo de vida.
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-slate-200 border border-slate-200 rounded-[40px] overflow-hidden shadow-2xl shadow-slate-200/50">
+                    <!-- Feature Cards -->
+                    <div class="p-10 bg-white hover:bg-slate-50 transition-colors group relative">
+                        <div class="w-12 h-12 bg-green-500 rounded-2xl flex items-center justify-center text-white mb-8 group-hover:scale-110 transition-transform duration-500">
+                            <i data-lucide="message-circle"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-4 tracking-tight">Controle via WhatsApp</h3>
+                        <p class="text-slate-500 leading-relaxed text-sm font-medium">Mande um áudio, texto ou foto do comprovante. Nossa IA entende tudo e lança no app para você.</p>
+                        <div class="absolute bottom-0 left-0 w-0 h-1 bg-primary transition-all duration-500 group-hover:w-full"></div>
+                    </div>
+                    <div class="p-10 bg-white hover:bg-slate-50 transition-colors group relative">
+                        <div class="w-12 h-12 bg-blue-500 rounded-2xl flex items-center justify-center text-white mb-8 group-hover:scale-110 transition-transform duration-500">
+                            <i data-lucide="wallet"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-4 tracking-tight">Lançamentos Manuais</h3>
+                        <p class="text-slate-500 leading-relaxed text-sm font-medium">Prefere o controle total? Insira seus gastos e ganhos manualmente de forma rápida e intuitiva.</p>
+                        <div class="absolute bottom-0 left-0 w-0 h-1 bg-primary transition-all duration-500 group-hover:w-full"></div>
+                    </div>
+                    <div class="p-10 bg-white hover:bg-slate-50 transition-colors group relative">
+                        <div class="w-12 h-12 bg-indigo-500 rounded-2xl flex items-center justify-center text-white mb-8 group-hover:scale-110 transition-transform duration-500">
+                            <i data-lucide="bar-chart-3"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-4 tracking-tight">Relatórios Inteligentes</h3>
+                        <p class="text-slate-500 leading-relaxed text-sm font-medium">Visualize para onde seu dinheiro está indo com gráficos claros e insights automáticos.</p>
+                        <div class="absolute bottom-0 left-0 w-0 h-1 bg-primary transition-all duration-500 group-hover:w-full"></div>
+                    </div>
+                    <div class="p-10 bg-white hover:bg-slate-50 transition-colors group relative">
+                        <div class="w-12 h-12 bg-purple-500 rounded-2xl flex items-center justify-center text-white mb-8 group-hover:scale-110 transition-transform duration-500">
+                            <i data-lucide="target"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-4 tracking-tight">Metas de Economia</h3>
+                        <p class="text-slate-500 leading-relaxed text-sm font-medium">Planeje sua próxima viagem ou reserva de emergência com metas personalizadas.</p>
+                        <div class="absolute bottom-0 left-0 w-0 h-1 bg-primary transition-all duration-500 group-hover:w-full"></div>
+                    </div>
+                    <div class="p-10 bg-white hover:bg-slate-50 transition-colors group relative">
+                        <div class="w-12 h-12 bg-emerald-500 rounded-2xl flex items-center justify-center text-white mb-8 group-hover:scale-110 transition-transform duration-500">
+                            <i data-lucide="shield-check"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-4 tracking-tight">Segurança de Elite</h3>
+                        <p class="text-slate-500 leading-relaxed text-sm font-medium">Seus dados protegidos com criptografia de nível bancário e privacidade total.</p>
+                        <div class="absolute bottom-0 left-0 w-0 h-1 bg-primary transition-all duration-500 group-hover:w-full"></div>
+                    </div>
+                    <div class="p-10 bg-white hover:bg-slate-50 transition-colors group relative">
+                        <div class="w-12 h-12 bg-amber-500 rounded-2xl flex items-center justify-center text-white mb-8 group-hover:scale-110 transition-transform duration-500">
+                            <i data-lucide="bell"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-4 tracking-tight">Alertas de Vencimento</h3>
+                        <p class="text-slate-500 leading-relaxed text-sm font-medium">Receba notificações sobre contas a vencer e nunca mais pague juros por atraso.</p>
+                        <div class="absolute bottom-0 left-0 w-0 h-1 bg-primary transition-all duration-500 group-hover:w-full"></div>
+                    </div>
+                    <div class="p-10 bg-white hover:bg-slate-50 transition-colors group relative">
+                        <div class="w-12 h-12 bg-rose-500 rounded-2xl flex items-center justify-center text-white mb-8 group-hover:scale-110 transition-transform duration-500">
+                            <i data-lucide="mic"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-4 tracking-tight">Comandos de Voz</h3>
+                        <p class="text-slate-500 leading-relaxed text-sm font-medium">Fale quanto gastou e a categoria. A IA processa o áudio e registra instantaneamente.</p>
+                        <div class="absolute bottom-0 left-0 w-0 h-1 bg-primary transition-all duration-500 group-hover:w-full"></div>
+                    </div>
+                    <div class="p-10 bg-white hover:bg-slate-50 transition-colors group relative">
+                        <div class="w-12 h-12 bg-sky-500 rounded-2xl flex items-center justify-center text-white mb-8 group-hover:scale-110 transition-transform duration-500">
+                            <i data-lucide="camera"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-4 tracking-tight">Leitura de Recibos</h3>
+                        <p class="text-slate-500 leading-relaxed text-sm font-medium">Tire uma foto do cupom fiscal e deixe que nossa IA extraia os valores automaticamente.</p>
+                        <div class="absolute bottom-0 left-0 w-0 h-1 bg-primary transition-all duration-500 group-hover:w-full"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing -->
+        <section id="precos" class="py-32 bg-white relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center max-w-3xl mx-auto mb-24">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest mb-6">Planos e Preços</div>
+                    <h2 class="text-5xl sm:text-6xl font-bold text-slate-900 tracking-tighter leading-[0.9] mb-8">
+                        Escolha o plano <span class="text-primary">ideal para você.</span>
+                    </h2>
+                    <p class="text-xl text-slate-500 font-medium">De lançamentos manuais à automação total via WhatsApp. Comece agora mesmo.</p>
+                </div>
+
+                <div class="grid lg:grid-cols-3 gap-8">
+                    <!-- Essencial -->
+                    <div class="bg-slate-50 rounded-[40px] p-10 border border-slate-100 flex flex-col h-full">
+                        <h3 class="text-2xl font-bold text-slate-900 mb-2">Essencial</h3>
+                        <p class="text-slate-500 text-sm mb-8">7 dias grátis para você começar a organizar sua vida.</p>
+                        <div class="mb-8">
+                            <span class="text-5xl font-black tracking-tighter text-slate-900">R$ 19,90</span>
+                            <span class="text-slate-400 font-bold">/mês</span>
+                        </div>
+                        <ul class="space-y-4 mb-10 flex-grow">
+                            <li class="flex items-center gap-3 text-slate-600 font-medium text-sm">
+                                <i data-lucide="check" class="text-primary w-5 h-5"></i> Lançamentos manuais ilimitados
+                            </li>
+                            <li class="flex items-center gap-3 text-slate-600 font-medium text-sm">
+                                <i data-lucide="check" class="text-primary w-5 h-5"></i> Relatórios mensais básicos
+                            </li>
+                            <li class="flex items-center gap-3 text-slate-600 font-medium text-sm">
+                                <i data-lucide="check" class="text-primary w-5 h-5"></i> Controle de gastos por categoria
+                            </li>
+                            <li class="flex items-center gap-3 text-slate-600 font-medium text-sm">
+                                <i data-lucide="check" class="text-primary w-5 h-5"></i> Metas de economia
+                            </li>
+                            <li class="flex items-center gap-3 text-slate-600 font-medium text-sm">
+                                <i data-lucide="check" class="text-primary w-5 h-5"></i> 7 dias de teste gratuito
+                            </li>
+                        </ul>
+                        <button class="w-full py-5 rounded-2xl bg-white border border-slate-200 text-slate-900 font-bold hover:border-primary transition-all">Começar Teste Grátis</button>
+                    </div>
+
+                    <!-- Pro -->
+                    <div class="bg-slate-900 rounded-[40px] p-10 border border-slate-800 flex flex-col h-full relative overflow-hidden shadow-2xl shadow-primary/20">
+                        <div class="absolute top-0 right-0 bg-primary text-white text-[10px] font-black uppercase tracking-widest px-6 py-2 rounded-bl-2xl">Mais Popular</div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Pro</h3>
+                        <p class="text-slate-400 text-sm mb-8">A praticidade do WhatsApp aliada ao poder da IA.</p>
+                        <div class="mb-8">
+                            <span class="text-5xl font-black tracking-tighter text-white">R$ 39,90</span>
+                            <span class="text-slate-500 font-bold">/mês</span>
+                        </div>
+                        <ul class="space-y-4 mb-10 flex-grow">
+                            <li class="flex items-center gap-3 text-slate-300 font-medium text-sm">
+                                <i data-lucide="check" class="text-primary w-5 h-5"></i> Controle total via WhatsApp
+                            </li>
+                            <li class="flex items-center gap-3 text-slate-300 font-medium text-sm">
+                                <i data-lucide="check" class="text-primary w-5 h-5"></i> Envio de fotos de comprovantes
+                            </li>
+                            <li class="flex items-center gap-3 text-slate-300 font-medium text-sm">
+                                <i data-lucide="check" class="text-primary w-5 h-5"></i> Lançamentos via áudio e texto
+                            </li>
+                            <li class="flex items-center gap-3 text-slate-300 font-medium text-sm">
+                                <i data-lucide="check" class="text-primary w-5 h-5"></i> Dashboard detalhado no app
+                            </li>
+                            <li class="flex items-center gap-3 text-slate-300 font-medium text-sm">
+                                <i data-lucide="check" class="text-primary w-5 h-5"></i> Inteligência Artificial avançada
+                            </li>
+                            <li class="flex items-center gap-3 text-slate-300 font-medium text-sm">
+                                <i data-lucide="check" class="text-primary w-5 h-5"></i> Suporte prioritário
+                            </li>
+                        </ul>
+                        <button class="w-full py-5 rounded-2xl bg-primary text-white font-bold hover:bg-primary/90 transition-all shadow-xl shadow-primary/20">Assinar Pro</button>
+                    </div>
+
+                    <!-- Enterprise -->
+                    <div class="bg-slate-50 rounded-[40px] p-10 border border-slate-100 flex flex-col h-full">
+                        <h3 class="text-2xl font-bold text-slate-900 mb-2">Enterprise</h3>
+                        <p class="text-slate-500 text-sm mb-8">O melhor custo-benefício para sua gestão a longo prazo.</p>
+                        <div class="mb-8">
+                            <span class="text-5xl font-black tracking-tighter text-slate-900">R$ 197,00</span>
+                            <span class="text-slate-400 font-bold">/6 meses</span>
+                        </div>
+                        <ul class="space-y-4 mb-10 flex-grow">
+                            <li class="flex items-center gap-3 text-slate-600 font-medium text-sm">
+                                <i data-lucide="check" class="text-primary w-5 h-5"></i> Tudo do plano Pro
+                            </li>
+                            <li class="flex items-center gap-3 text-slate-600 font-medium text-sm">
+                                <i data-lucide="check" class="text-primary w-5 h-5"></i> Acesso por 6 meses
+                            </li>
+                            <li class="flex items-center gap-3 text-slate-600 font-medium text-sm">
+                                <i data-lucide="check" class="text-primary w-5 h-5"></i> Economia de 18% (R$ 42 off)
+                            </li>
+                            <li class="flex items-center gap-3 text-slate-600 font-medium text-sm">
+                                <i data-lucide="check" class="text-primary w-5 h-5"></i> Relatórios de performance semestral
+                            </li>
+                            <li class="flex items-center gap-3 text-slate-600 font-medium text-sm">
+                                <i data-lucide="check" class="text-primary w-5 h-5"></i> Consultoria financeira básica
+                            </li>
+                        </ul>
+                        <button class="w-full py-5 rounded-2xl bg-white border border-slate-200 text-slate-900 font-bold hover:border-primary transition-all">Assinar Semestral</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" class="py-24 bg-white" x-data="{ activeIndex: null }">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-20">
+                    <h2 class="text-4xl sm:text-5xl font-bold text-slate-900 mb-6 tracking-tight">Perguntas <span class="text-primary">Frequentes</span></h2>
+                    <p class="text-lg text-slate-600">Tire suas dúvidas sobre o funcionamento do List Finance.</p>
+                </div>
+                
+                <div class="space-y-4">
+                    <template x-for="(faq, index) in [
+                        {q: 'O que é o List Finance?', a: 'O List Finance é um sistema inteligente de gestão financeira que ajuda você a controlar gastos, criar metas e visualizar sua saúde financeira de forma simples e poderosa.'},
+                        {q: 'Como funciona o controle via WhatsApp?', a: 'No plano Pro, você recebe um número exclusivo. Basta enviar um áudio, texto ou foto do comprovante e nossa IA processa os dados e lança automaticamente no seu dashboard.'},
+                        {q: 'É seguro?', a: 'Sim! Utilizamos criptografia de nível bancário e seus dados são protegidos por rigorosos protocolos de privacidade. Você tem controle total sobre suas informações.'},
+                        {q: 'Posso usar o List Finance no meu celular?', a: 'Com certeza. O List Finance possui um aplicativo mobile dedicado além de uma versão web totalmente responsiva.'},
+                        {q: 'Como funciona o cancelamento?', a: 'Não temos contratos de fidelidade. Você pode cancelar sua assinatura a qualquer momento diretamente pelo painel de configurações.'}
+                    ]" :key="index">
+                        <div :class="activeIndex === index ? 'border-primary bg-primary/5 shadow-lg shadow-primary/5' : 'border-slate-100 bg-slate-50'" class="border-2 rounded-3xl transition-all overflow-hidden">
+                            <button @click="activeIndex = activeIndex === index ? null : index" class="w-full px-8 py-6 flex items-center justify-between text-left focus:outline-none">
+                                <span class="text-lg font-bold text-slate-900" x-text="faq.q"></span>
+                                <div :class="activeIndex === index ? 'bg-primary text-white rotate-180' : 'bg-white text-slate-400'" class="w-8 h-8 rounded-full flex items-center justify-center transition-all">
+                                    <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                                </div>
+                            </button>
+                            <div x-show="activeIndex === index" x-cloak x-transition class="px-8 pb-8 text-slate-600 leading-relaxed" x-text="faq.a"></div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white pt-24 pb-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+                <div class="space-y-6">
+                    <div class="flex items-center group cursor-pointer">
+                        <span class="text-2xl font-black tracking-tighter text-white">LIST<span class="text-primary">FINANCE</span></span>
+                    </div>
+                    <p class="text-slate-400 leading-relaxed text-sm">O sistema financeiro que simplifica sua vida. Controle seus gastos, crie metas e alcance sua liberdade financeira com o List Finance.</p>
+                    <div class="flex items-center gap-4">
+                        <a href="#" class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center text-slate-400 hover:bg-primary hover:text-white transition-all"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                        <a href="#" class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center text-slate-400 hover:bg-primary hover:text-white transition-all"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                        <a href="#" class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center text-slate-400 hover:bg-primary hover:text-white transition-all"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-8">Links Rápidos</h4>
+                    <ul class="space-y-4 text-slate-400 text-sm">
+                        <li><a href="#como-funciona" class="hover:text-primary transition-all">Como Funciona</a></li>
+                        <li><a href="#recursos" class="hover:text-primary transition-all">Recursos</a></li>
+                        <li><a href="#precos" class="hover:text-primary transition-all">Planos</a></li>
+                        <li><a href="#faq" class="hover:text-primary transition-all">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-8">Suporte</h4>
+                    <ul class="space-y-4 text-slate-400 text-sm">
+                        <li class="flex items-center gap-3"><i data-lucide="mail" class="text-primary w-4 h-4"></i> suporte@listfinance.com.br</li>
+                        <li class="flex items-center gap-3"><i data-lucide="phone" class="text-primary w-4 h-4"></i> (11) 99999-9999</li>
+                        <li class="flex items-center gap-3"><i data-lucide="message-circle" class="text-primary w-4 h-4"></i> Atendimento via Chat</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-8">Legal</h4>
+                    <ul class="space-y-4 text-slate-400 text-sm">
+                        <li><a href="#" class="hover:text-primary transition-all">Termos de Uso</a></li>
+                        <li><a href="#" class="hover:text-primary transition-all">Política de Privacidade</a></li>
+                        <li><a href="#" class="hover:text-primary transition-all">Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-12 border-t border-white/10 text-center text-slate-500 text-xs">
+                <p>© 2026 List Finance - Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AI Chat Widget -->
+    <div x-data="{ open: false, messages: [{role: 'assistant', text: 'Olá! Sou o Assessor Financeiro do List Finance. Como posso te ajudar hoje?'}], userInput: '' }" class="fixed bottom-8 right-8 z-[60]">
+        <!-- Chat Button -->
+        <button @click="open = !open" class="w-16 h-16 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-all group relative">
+            <i data-lucide="message-circle" x-show="!open" class="w-8 h-8"></i>
+            <i data-lucide="x" x-show="open" class="w-8 h-8"></i>
+            <span class="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full border-2 border-white animate-pulse" x-show="!open"></span>
+        </button>
+
+        <!-- Chat Window -->
+        <div x-show="open" x-cloak x-transition class="absolute bottom-20 right-0 w-[380px] h-[550px] bg-white rounded-[32px] shadow-2xl border border-slate-100 flex flex-col overflow-hidden">
+            <div class="p-6 bg-slate-900 text-white">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-primary/20 rounded-2xl flex items-center justify-center text-primary">
+                        <i data-lucide="zap"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg">Assessor Financeiro</h4>
+                        <p class="text-[10px] font-bold text-primary uppercase tracking-widest">Online agora</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex-grow p-6 overflow-y-auto space-y-4 custom-scrollbar bg-slate-50" id="chat-messages">
+                <template x-for="msg in messages">
+                    <div :class="msg.role === 'user' ? 'flex justify-end' : 'flex justify-start'">
+                        <div :class="msg.role === 'user' ? 'bg-primary text-white rounded-2xl rounded-tr-none' : 'bg-white text-slate-700 rounded-2xl rounded-tl-none border border-slate-100 shadow-sm'" class="max-w-[85%] p-4 text-sm font-medium leading-relaxed">
+                            <p x-text="msg.text"></p>
+                        </div>
+                    </div>
+                </template>
+            </div>
+
+            <div class="p-4 bg-white border-t border-slate-100">
+                <div class="relative">
+                    <input 
+                        type="text" 
+                        x-model="userInput" 
+                        @keydown.enter="if(userInput.trim()) { 
+                            const text = userInput;
+                            messages.push({role: 'user', text});
+                            userInput = '';
+                            // AI Logic would go here
+                            setTimeout(() => {
+                                messages.push({role: 'assistant', text: 'Entendi! Como sou uma versão HTML estática, para eu te responder de verdade você precisa configurar a chave de API. Mas já posso te dizer que o plano Pro é incrível!'});
+                            }, 1000);
+                        }"
+                        placeholder="Pergunte qualquer coisa..." 
+                        class="w-full bg-slate-50 border-none rounded-2xl py-4 pl-6 pr-14 text-sm font-medium focus:ring-2 focus:ring-primary/20 transition-all"
+                    >
+                    <button class="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-primary text-white rounded-xl flex items-center justify-center hover:bg-primary/90 transition-all">
+                        <i data-lucide="send" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
