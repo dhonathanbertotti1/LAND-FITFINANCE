@@ -7,15 +7,12 @@ export default function Footer() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
           <div className="space-y-6">
             <div className="flex items-center group cursor-pointer">
-              <img 
-                src="https://raw.githubusercontent.com/dhonathanbertotti1/imagens-fitfinance/refs/heads/main/2.png" 
-                alt="Fit Finance Logo" 
-                className="h-12 w-auto object-contain transition-transform group-hover:scale-105"
-                referrerPolicy="no-referrer"
-              />
+              <span className="text-2xl font-black tracking-tighter text-white">
+                LIST<span className="text-primary">FINANCE</span>
+              </span>
             </div>
             <p className="text-slate-400 leading-relaxed text-sm">
-              A disciplina que você busca para o seu corpo, agora com ferramentas de elite para criar rotinas e visualizar seu progresso real.
+              O sistema financeiro que simplifica sua vida. Controle seus gastos, crie metas e alcance sua liberdade financeira com o List Finance.
             </p>
             <div className="flex items-center gap-4">
               <a href="#" className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center text-slate-400 hover:bg-primary hover:text-white transition-all">
@@ -45,7 +42,7 @@ export default function Footer() {
             <ul className="space-y-4 text-slate-400 text-sm">
               <li className="flex items-center gap-3">
                 <Mail size={18} className="text-primary" />
-                suporte@fitfinance.ia
+                suporte@listfinance.com.br
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={18} className="text-primary" />
@@ -53,7 +50,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <MessageCircle size={18} className="text-primary" />
-                Atendimento via WhatsApp
+                Atendimento via Chat
               </li>
             </ul>
           </div>
@@ -69,7 +66,7 @@ export default function Footer() {
         </div>
         
         <div className="pt-12 border-t border-white/10 text-center text-slate-500 text-xs">
-          <p>© 2026 Fit Finance.ia - Uma empresa do grupo Tittanium INC. Todos os direitos reservados.</p>
+          <p>© 2026 List Finance - Todos os direitos reservados.</p>
         </div>
       </div>
     </footer>

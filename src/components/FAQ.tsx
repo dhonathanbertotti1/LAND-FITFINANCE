@@ -4,28 +4,28 @@ import { Plus, Minus } from "lucide-react";
 
 const faqs = [
   {
-    question: "Como funciona o Fit Finance?",
-    answer: "O Fit Finance é um assistente pessoal inteligente que funciona inteiramente pelo WhatsApp. Você envia mensagens de texto ou áudio e ele registra seus gastos, marca compromissos na sua agenda e te envia lembretes diários."
+    question: "O que é o List Finance?",
+    answer: "O List Finance é um sistema inteligente de gestão financeira que ajuda você a controlar gastos, criar metas e visualizar sua saúde financeira de forma simples e poderosa."
   },
   {
-    question: "Preciso baixar algum aplicativo?",
-    answer: "Não! Essa é a grande vantagem. Você utiliza o WhatsApp que já tem no seu celular. Não precisa de espaço extra na memória ou aprender a usar uma interface nova e complexa."
+    question: "É seguro conectar minhas contas bancárias?",
+    answer: "Sim! Utilizamos as tecnologias mais seguras do mercado e criptografia de nível bancário. Seus dados de acesso nunca são armazenados por nós, apenas as transações para fins de relatório."
   },
   {
-    question: "Meus dados estão seguros?",
-    answer: "Sim, levamos a privacidade muito a sério. Seus dados são criptografados e nunca são compartilhados com terceiros. Você tem total controle sobre suas informações e pode solicitar a exclusão a qualquer momento."
+    question: "Posso usar o List Finance no meu celular?",
+    answer: "Com certeza. O List Finance possui um aplicativo mobile dedicado para iOS e Android, além de uma versão web totalmente responsiva que funciona em qualquer navegador."
   },
   {
-    question: "Como funciona a integração com o Google Agenda?",
-    answer: "Ao ativar sua conta, você poderá vincular seu Google Agenda. Sempre que você marcar um compromisso pelo WhatsApp, ele aparecerá automaticamente no seu calendário do Google e vice-versa."
+    question: "Como os relatórios de IA me ajudam?",
+    answer: "Nossa inteligência artificial analisa seus padrões de consumo e sugere onde você pode economizar, além de prever seus gastos futuros com base no seu histórico."
   },
   {
-    question: "Posso cancelar minha assinatura quando quiser?",
-    answer: "Com certeza. Não temos fidelidade nos planos mensal e anual. Você pode cancelar a renovação a qualquer momento diretamente pelo painel ou solicitando ao suporte via WhatsApp."
+    question: "Posso exportar meus dados para o contador?",
+    answer: "Sim. Você pode exportar todos os seus relatórios e transações em formatos como PDF, Excel e CSV a qualquer momento, facilitando a declaração de impostos ou gestão empresarial."
   },
   {
-    question: "O assessor entende áudio?",
-    answer: "Sim! Você pode enviar áudios descrevendo seus gastos ou compromissos e nossa inteligência artificial processará a informação da mesma forma que o texto."
+    question: "Como funciona o cancelamento?",
+    answer: "Não temos contratos de fidelidade. Você pode cancelar sua assinatura a qualquer momento diretamente pelo painel de configurações, sem multas ou burocracia."
   }
 ];
 
@@ -40,7 +40,7 @@ export default function FAQ() {
             Perguntas <span className="text-primary">Frequentes</span>
           </h2>
           <p className="text-lg text-slate-600">
-            Tire suas dúvidas sobre o funcionamento do Fit Finance.
+            Tire suas dúvidas sobre o funcionamento do List Finance.
           </p>
         </div>
         

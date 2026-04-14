@@ -3,47 +3,50 @@ import { Check, Sparkles } from "lucide-react";
 
 const plans = [
   {
-    name: "Iniciante",
-    price: "R$ 0",
+    name: "Essencial",
+    price: "R$ 19,90",
     period: "/mês",
-    description: "Para quem está começando sua jornada de performance.",
+    description: "7 dias grátis para você começar a organizar sua vida.",
     features: [
-      "Até 3 treinos personalizados",
-      "Dashboard básico de evolução",
-      "Histórico de 30 dias",
-      "Suporte via comunidade"
+      "Lançamentos manuais ilimitados",
+      "Relatórios mensais básicos",
+      "Controle de gastos por categoria",
+      "Metas de economia",
+      "7 dias de teste gratuito"
     ],
-    cta: "Começar Grátis",
+    cta: "Começar Teste Grátis",
     popular: false
   },
   {
     name: "Pro",
-    price: "R$ 29",
+    price: "R$ 39,90",
     period: "/mês",
-    description: "O plano completo para atletas de alta performance.",
+    description: "A praticidade do WhatsApp aliada ao poder da IA.",
     features: [
-      "Treinos ilimitados",
-      "Dashboard avançado com IA",
-      "Histórico vitalício",
-      "Coach IA 24/7",
-      "Análise de biometria",
-      "Exportação de dados"
+      "Controle total via WhatsApp",
+      "Envio de fotos de comprovantes",
+      "Lançamentos via áudio e texto",
+      "Dashboard detalhado no app",
+      "Inteligência Artificial avançada",
+      "Suporte prioritário"
     ],
     cta: "Assinar Pro",
     popular: true
   },
   {
-    name: "Vitalício",
-    price: "R$ 497",
-    period: " único",
-    description: "Acesso total para sempre. Sem assinaturas.",
+    name: "Enterprise",
+    price: "R$ 197,00",
+    period: "/6 meses",
+    description: "O melhor custo-benefício para sua gestão a longo prazo.",
     features: [
       "Tudo do plano Pro",
-      "Acesso antecipado a novos recursos",
-      "Suporte prioritário 1-on-1",
-      "Badge exclusiva de Membro Fundador"
+      "Acesso por 6 meses",
+      "Economia de 18% (R$ 42 off)",
+      "Relatórios de performance semestral",
+      "Consultoria financeira básica",
+      "Badge de Membro VIP"
     ],
-    cta: "Comprar Agora",
+    cta: "Assinar Semestral",
     popular: false
   }
 ];
@@ -62,10 +65,10 @@ export default function Pricing() {
             Planos e Preços
           </motion.div>
           <h2 className="text-5xl sm:text-6xl font-display font-bold text-slate-900 tracking-tighter leading-[0.9] mb-8">
-            Invista na sua <span className="text-primary">melhor versão.</span>
+            Escolha o plano <span className="text-primary">ideal para você.</span>
           </h2>
           <p className="text-xl text-slate-500 font-medium">
-            Escolha o plano que melhor se adapta ao seu nível de compromisso com seus resultados.
+            De lançamentos manuais à automação total via WhatsApp. Comece agora mesmo.
           </p>
         </div>
 

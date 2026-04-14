@@ -32,12 +32,9 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           <div className="flex items-center group cursor-pointer">
-            <img 
-              src="https://raw.githubusercontent.com/dhonathanbertotti1/imagens-fitfinance/refs/heads/main/1.png" 
-              alt="Fit Finance Logo" 
-              className="h-12 w-auto object-contain transition-transform group-hover:scale-105"
-              referrerPolicy="no-referrer"
-            />
+            <span className="text-2xl font-black tracking-tighter text-slate-900">
+              LIST<span className="text-primary">FINANCE</span>
+            </span>
           </div>
 
           {/* Desktop Nav */}

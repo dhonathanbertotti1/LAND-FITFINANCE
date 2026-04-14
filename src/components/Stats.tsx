@@ -4,27 +4,27 @@ import { Users, Star, TrendingUp, ShieldCheck } from "lucide-react";
 const stats = [
   {
     icon: Users,
-    value: "200k+",
-    label: "Usuários Ativados",
-    description: "Pessoas que transformaram suas vidas com o assessor."
+    value: "500k+",
+    label: "Usuários Ativos",
+    description: "Pessoas que simplificaram sua vida financeira conosco."
+  },
+  {
+    icon: TrendingUp,
+    value: "R$ 2B+",
+    label: "Transacionados",
+    description: "Volume financeiro gerenciado com total segurança."
   },
   {
     icon: Star,
     value: "4.9/5",
     label: "Avaliação Média",
-    description: "Satisfação garantida por quem usa todos os dias."
-  },
-  {
-    icon: TrendingUp,
-    value: "15M+",
-    label: "Registros Realizados",
-    description: "Dados processados com segurança e inteligência."
+    description: "A plataforma financeira mais amada pelos usuários."
   },
   {
     icon: ShieldCheck,
     value: "100%",
     label: "Seguro e Privado",
-    description: "Sua privacidade é nossa prioridade número um."
+    description: "Criptografia de ponta a ponta em todos os seus dados."
   }
 ];
 
@@ -34,10 +34,10 @@ export default function Stats() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-20">
           <h2 className="text-4xl sm:text-5xl font-display font-bold text-slate-900 mb-6">
-            Números que <span className="text-primary">comprovam</span>
+            Números que <span className="text-primary">trazem confiança</span>
           </h2>
           <p className="text-lg text-slate-600">
-            Somos a maior plataforma de assessoria pessoal via WhatsApp do Brasil.
+            Somos a plataforma financeira que mais cresce no Brasil, focada em simplicidade e resultados reais.
           </p>
         </div>
         

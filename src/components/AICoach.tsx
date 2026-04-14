@@ -8,7 +8,7 @@ const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 export default function AICoach() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
-    { role: "bot", content: "Olá! Sou o seu Assessor IA do Fit Finance. Como posso ajudar você a organizar suas finanças e agenda hoje?" }
+    { role: "bot", content: "Olá! Sou o seu Assessor Financeiro do List Finance. Como posso ajudar você a organizar suas finanças hoje?" }
   ]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -33,14 +33,14 @@ export default function AICoach() {
         model: "gemini-3-flash-preview",
         contents: userMessage,
         config: {
-          systemInstruction: "Você é o Assessor IA do Fit Finance, um assistente de elite especializado em organização financeira, gestão de tempo e produtividade. Seu tom é profissional, prestativo e direto ao ponto. Você ajuda os usuários a registrarem gastos, marcarem compromissos e manterem a rotina organizada. Responda em português do Brasil.",
+          systemInstruction: "Você é o Assessor Financeiro do List Finance, um assistente de elite especializado em gestão financeira pessoal e empresarial. Seu tom é profissional, prestativo e direto ao ponto. Você ajuda os usuários a organizarem seus gastos, criarem metas de economia e entenderem seus relatórios financeiros. Explique que o plano Pro permite lançamentos automáticos via WhatsApp enviando áudios, textos ou fotos de comprovantes. Responda em português do Brasil.",
         }
       });
 
       setMessages(prev => [...prev, { role: "bot", content: response.text || "Desculpe, tive um problema ao processar sua resposta." }]);
     } catch (error) {
       console.error("AI Error:", error);
-      setMessages(prev => [...prev, { role: "bot", content: "Ocorreu um erro ao conectar com o Coach. Tente novamente mais tarde." }]);
+      setMessages(prev => [...prev, { role: "bot", content: "Ocorreu um erro ao conectar com o Assessor. Tente novamente mais tarde." }]);
     } finally {
       setIsLoading(false);
     }
@@ -75,8 +75,8 @@ export default function AICoach() {
                   <Sparkles size={20} />
                 </div>
                 <div>
-                  <h4 className="text-white font-bold text-sm">Assessor IA</h4>
-                  <p className="text-slate-500 text-[10px] font-bold uppercase tracking-widest">Online • Fit Finance</p>
+                  <h4 className="text-white font-bold text-sm">Assessor Financeiro</h4>
+                  <p className="text-slate-500 text-[10px] font-bold uppercase tracking-widest">Online • List Finance</p>
                 </div>
               </div>
               <button 
@@ -135,7 +135,7 @@ export default function AICoach() {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyPress={(e) => e.key === "Enter" && handleSend()}
-                  placeholder="Pergunte algo ao Coach..."
+                  placeholder="Pergunte algo ao Assessor..."
                   className="w-full bg-slate-50 border border-slate-200 rounded-2xl py-4 pl-6 pr-14 text-sm focus:outline-none focus:border-primary transition-colors"
                 />
                 <button 

@@ -1,67 +1,65 @@
 import { motion } from "motion/react";
 import { 
-  MessageCircle, 
-  LayoutDashboard, 
-  History, 
+  Wallet, 
+  BarChart3, 
   Target, 
-  Users, 
-  Settings, 
+  ShieldCheck, 
   Bell, 
-  CalendarRange,
-  Zap,
-  Shield,
   Smartphone,
-  BarChart3
+  MessageCircle,
+  Mic,
+  Camera,
+  Zap
 } from "lucide-react";
 
 const features = [
   {
     icon: MessageCircle,
-    title: "Comandos por Voz",
-    description: "Envie áudios no WhatsApp e o Fit Finance processa tudo automaticamente.",
+    title: "Controle via WhatsApp",
+    description: "Mande um áudio, texto ou foto do comprovante. Nossa IA entende tudo e lança no app para você.",
+    color: "bg-green-500"
+  },
+  {
+    icon: Wallet,
+    title: "Lançamentos Manuais",
+    description: "Prefere o controle total? Insira seus gastos e ganhos manualmente de forma rápida e intuitiva.",
     color: "bg-blue-500"
   },
   {
-    icon: LayoutDashboard,
-    title: "Gestão Financeira",
-    description: "Registre gastos e ganhos apenas enviando uma mensagem rápida.",
+    icon: BarChart3,
+    title: "Relatórios Inteligentes",
+    description: "Visualize para onde seu dinheiro está indo com gráficos claros e insights automáticos.",
     color: "bg-indigo-500"
-  },
-  {
-    icon: CalendarRange,
-    title: "Agenda Inteligente",
-    description: "Marque compromissos e receba lembretes diretamente no seu chat.",
-    color: "bg-purple-500"
   },
   {
     icon: Target,
     title: "Metas de Economia",
-    description: "Defina objetivos financeiros e acompanhe seu progresso em tempo real.",
-    color: "bg-pink-500"
+    description: "Planeje sua próxima viagem ou reserva de emergência com metas personalizadas.",
+    color: "bg-purple-500"
   },
   {
-    icon: Zap,
-    title: "Resposta Instantânea",
-    description: "Nossa IA responde em segundos, 24 horas por dia, 7 dias por semana.",
-    color: "bg-amber-500"
-  },
-  {
-    icon: Shield,
-    title: "Privacidade Total",
-    description: "Seus dados são criptografados e nunca compartilhados com terceiros.",
+    icon: ShieldCheck,
+    title: "Segurança de Elite",
+    description: "Seus dados protegidos com criptografia de nível bancário e privacidade total.",
     color: "bg-emerald-500"
   },
   {
-    icon: Smartphone,
-    title: "Sem Novos Apps",
-    description: "Tudo funciona dentro do WhatsApp que você já usa todos os dias.",
-    color: "bg-slate-500"
+    icon: Bell,
+    title: "Alertas de Vencimento",
+    description: "Receba notificações sobre contas a vencer e nunca mais pague juros por atraso.",
+    color: "bg-amber-500"
   },
   {
-    icon: BarChart3,
-    title: "Relatórios Semanais",
-    description: "Receba um resumo detalhado da sua semana financeira e agenda.",
+    icon: Mic,
+    title: "Comandos de Voz",
+    description: "Fale quanto gastou e a categoria. A IA processa o áudio e registra instantaneamente.",
     color: "bg-rose-500"
+  },
+  {
+    icon: Camera,
+    title: "Leitura de Recibos",
+    description: "Tire uma foto do cupom fiscal e deixe que nossa IA extraia os valores automaticamente.",
+    color: "bg-sky-500"
   }
 ];
 
@@ -82,14 +80,14 @@ export default function Features() {
               viewport={{ once: true }}
               className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest mb-6"
             >
-              Recursos de Elite
+              Recursos do Sistema
             </motion.div>
             <h2 className="text-5xl sm:text-6xl font-display font-bold text-slate-900 tracking-tighter leading-[0.9]">
-              Sua rotina em <span className="text-primary">alta performance.</span>
+              Gestão financeira <span className="text-primary">sem esforço.</span>
             </h2>
           </div>
           <p className="text-xl text-slate-500 max-w-sm font-medium leading-relaxed">
-            O Fit Finance oferece as ferramentas necessárias para você organizar sua vida sem sair do WhatsApp.
+            Do manual ao automático via WhatsApp, o List Finance se adapta ao seu estilo de vida.
           </p>
         </div>
         
